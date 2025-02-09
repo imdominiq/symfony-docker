@@ -1,5 +1,62 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+# config/routes.yaml
+
+api_login_check:
+  path: /api/login_check
+  methods: ['POST']
+
+api_users_show:
+  path: /api/users/show
+  controller: App\Controller\UserController::showUser
+  methods: ['GET']
+
+api_register:
+  path: /api/register
+  controller: App\Controller\AuthController::register
+  methods: ['POST']
+
+# Artykuły
+article_list:
+  path: /artykuly
+  controller: App\Controller\BlogController::listArticles
+  methods: ['GET']
+
+article_show:
+  path: /artykuly/{id}
+  controller: App\Controller\BlogController::showArticle
+  methods: ['GET']
+
+article_create:
+  path: /api/articles
+  controller: App\Controller\ArticleController::createArticle
+  methods: ['POST']
+
+article_update:
+  path: /api/articles/{id}
+  controller: App\Controller\ArticleController::updateArticle
+  methods: ['PUT']
+
+article_delete:
+  path: /api/articles/{id}
+  controller: App\Controller\ArticleController::deleteArticle
+  methods: ['DELETE']
+
+article_with_comments:
+  path: /api/articles/with-comments
+  controller: App\Controller\ArticleController::getArticlesWithComments
+  methods: ['GET']
+
+# Komentarze
+comment_create:
+  path: /api/comments/{articleId}
+  controller: App\Controller\CommentController::createComment
+  methods: ['POST']
+
+comment_list:
+  path: /api/comments/{articleId}
+  controller: App\Controller\CommentController::getComments
+  methods: ['GET']
+
+comment_delete:
+  path: /api/comments/delete/{id}
+  controller: App\Controller\CommentController::deleteComment
+  methods: ['DELETE']
